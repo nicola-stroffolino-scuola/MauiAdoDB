@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ADO_SQLITE.MainPage"
+             >
+
+        <Grid x:Name="MainGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <HorizontalStackLayout Grid.Row="0">
+
+                <Button
+                    x:Name="LoadDataBtn"
+                    BackgroundColor="LightBlue"
+                    Text="Carica Dati"
+                    TextColor="Black"
+                    Clicked="LoadDataClicked"
+                />
+
+            </HorizontalStackLayout>
+            
+            <CollectionView x:Name="ShowData"
+                SelectionMode="Single"
+                SelectionChanged="ShowData_SelectionChanged"
+                Grid.Row="1"
+                ItemsSource="{Binding DTO_Books}"
+                ItemsUpdatingScrollMode="KeepLastItemInView"
+                >
+            
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnSpacing="3" Margin="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <BoxView Color="LightBlue"
+                                     Grid.Column="0"
+                                     Grid.Row="0"
+                                     Grid.ColumnSpan="3"/>
+                            <Label Grid.Column="0"
+                                   Padding="3"
+                                   Text="ISBN"
+                                   Grid.ColumnSpan="3"
+                                   />
+                            <BoxView Color="LightBlue"
+                                     Grid.Column="3"
+                                     Grid.Row="0"
+                                     Grid.ColumnSpan="1"/>
+                            <Label Grid.Column="3"
+                                   Padding="3"
+                                   Text="Anno"/>
+                            <Label x:Name="lblISBN"
+                                   Grid.Row="1"
+                                   Grid.ColumnSpan="3"
+                                   Padding="3"
+                                   Text="{Binding ISBN}"
+                                   
+                                   />
+                            <Label Grid.Column="3"
+                                   Grid.Row="1"
+                                   Padding="3"
+                                   Text="{Binding Anno}"/>
+                             <BoxView Color="LightBlue"
+                                     Grid.Column="0"
+                                     Grid.Row="2"
+                                     Grid.ColumnSpan="4"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="2"
+                                   Padding="3"
+                                   Text="Titolo"
+                                   Grid.ColumnSpan="4"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Column="0"
+                                   Grid.ColumnSpan="4"
+                                   Grid.Row="4"
+                                   Padding="3"
+                                   Text="{Binding Titolo}"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+
+</ContentPage>
+
