@@ -62,10 +62,8 @@ public partial class DetailsPage : ContentPage
                     var command = connection.CreateCommand();
                     command.CommandText =
                     @"
-                        SELECT B.ISBN, B.Titolo, B.Anno, B.prezzo, A.Cognome as Autori, P.Nome as Editore, G.Descrizione as GenereNarrativo
+                        SELECT B.ISBN, B.Titolo, B.Anno, B.prezzo, P.Nome as Editore, G.Descrizione as GenereNarrativo
                         FROM Book as B
-                        INNER JOIN Write as W ON B.ISBN = W.Libro
-                        INNER JOIN Author as A ON A.Id = W.Autore
                         INNER JOIN Publisher as P ON B.Editore = P.Id
                         INNER JOIN Genre as G ON B.Genere = G.Id
                         WHERE B.ISBN = @idLibro
@@ -83,8 +81,8 @@ public partial class DetailsPage : ContentPage
                                 b.Anno = reader.GetInt32(2);
                                 b.Prezzo = reader.GetFloat(3);
                                 //b.Autori = reader.GetString(4);
-                                b.Editore = reader.GetString(5);
-                                b.GenereNarrativo = reader.GetString(6);
+                                b.Editore = reader.GetString(4);
+                                b.GenereNarrativo = reader.GetString(5);
                             }
                         }
                     }
