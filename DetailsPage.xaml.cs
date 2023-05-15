@@ -37,10 +37,9 @@ public partial class DetailsPage : ContentPage
                 getAutori.CommandText =
                     @"
                         SELECT A.Nome, A.Cognome
-                        From Book as B
-                        INNER JOIN Write as W on B.ISBN = W.Libro
+                        From Write as W 
                         INNER JOIN Author as A on A.Id = W.Autore
-                        Where B.ISBN = @idLibro
+                        Where W.Libro = @idLibro
                     ";
                 getAutori.Parameters.AddWithValue("@idLibro", idLibro);
 
@@ -62,7 +61,8 @@ public partial class DetailsPage : ContentPage
                     var command = connection.CreateCommand();
                     command.CommandText =
                     @"
-                        SELECT B.ISBN, B.Titolo, B.Anno, B.prezzo, P.Nome as Editore, G.Descrizione as GenereNarrativo
+                        SELECT B.ISBN, B.Titolo, B.Anno, B.prezzo, P.Nome as Editore,
+                            G.Descrizione as GenereNarrativo
                         FROM Book as B
                         INNER JOIN Publisher as P ON B.Editore = P.Id
                         INNER JOIN Genre as G ON B.Genere = G.Id
@@ -80,7 +80,6 @@ public partial class DetailsPage : ContentPage
                                 b.Titolo = reader.GetString(1);
                                 b.Anno = reader.GetInt32(2);
                                 b.Prezzo = reader.GetFloat(3);
-                                //b.Autori = reader.GetString(4);
                                 b.Editore = reader.GetString(4);
                                 b.GenereNarrativo = reader.GetString(5);
                             }
@@ -91,7 +90,6 @@ public partial class DetailsPage : ContentPage
                     lbl_Titolo.Text = b.Titolo.ToString();
                     lbl_Anno.Text = b.Anno.ToString();
                     lbl_Prezzo.Text = b.Prezzo.ToString();
-                    //lbl_Autori.Text = b.Autori.ToString();
                     lbl_Editore.Text = b.Editore.ToString();
                     lbl_Genere.Text = b.GenereNarrativo.ToString();
                 }

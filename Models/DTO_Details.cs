@@ -7,7 +7,6 @@ namespace ADO_SQLITE
 		public string Titolo { get; set; }
 		public int Anno { get; set; }
 		public float Prezzo { get; set; }
-		public string Autori { get; set; }
 		public string Editore { get; set; }
 		public string GenereNarrativo { get; set; }
 
