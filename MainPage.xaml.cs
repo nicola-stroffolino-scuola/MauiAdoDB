@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Storage;
 
 namespace ADO_SQLITE;
 
@@ -15,34 +16,26 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private async void LoadDataClicked(object sender, EventArgs e)
-	{
+    public string ValidateDatabase(string bundleFileName, string fileName) {
         //Recupero il path della cartella in cui si trova l'applicazione
         string mainDir = FileSystem.Current.AppDataDirectory;
-        string fileName = "DB_Libri_App.db";
-        string bundleFileName = "DB_Libri.db";
         //Genero il path completo con anche il nome del file al nuovo file
         string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
-        if (!File.Exists(targetFile))
-        {
+        if (!File.Exists(targetFile)) {
             //Se il file non esiste nel file system della app, lo copia dal bundle
-            try
-            {
+            try {
                 using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
-                using Stream fs = await FileSystem.Current.OpenAppPackageFileAsync(bundleFileName);
+                using Stream fs = FileSystem.Current.OpenAppPackageFileAsync(bundleFileName).Result;
 
                 using BinaryWriter writer = new BinaryWriter(outputStream);
-                using (BinaryReader reader = new BinaryReader(fs))
-                {
+                using (BinaryReader reader = new BinaryReader(fs)) {
                     var bytesRead = 0;
 
                     int bufferSize = 1024;
                     byte[] bytes;
                     var buffer = new byte[bufferSize];
-                    using (fs)
-                    {
-                        do
-                        {
+                    using (fs) {
+                        do {
                             buffer = reader.ReadBytes(bufferSize);
                             bytesRead = buffer.Count();
                             writer.Write(buffer);
@@ -51,13 +44,16 @@ public partial class MainPage : ContentPage
 
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Errore1", ex.Message, "OK");
+            } catch (Exception ex) {
+                DisplayAlert("Errore1", ex.Message, "OK");
             }
         }
+        return targetFile;
+    }
 
+    private async void LoadDataClicked(object sender, EventArgs e)
+    {
+        string targetFile = ValidateDatabase("DB_Libri.db", "DB_Libri_App.db");
         try
         {
             string connectionTarget = $"Data Source={targetFile}";
@@ -121,6 +117,14 @@ public partial class MainPage : ContentPage
             Int64 isbn = Convert.ToInt64(b.ISBN);
             Navigation.PushAsync(new DetailsPage(isbn));
         }
+    }
+
+    private void LoadEditorsBtn_Clicked(object sender, EventArgs e) {
+        
+    }
+
+    private void LoadGenresBtn_Clicked(object sender, EventArgs e) {
+
     }
 }
 

@@ -20,7 +20,23 @@
                     Clicked="LoadDataClicked"
                 />
 
-            </HorizontalStackLayout>
+                <Button
+                    x:Name="LoadEditorsBtn"
+                    BackgroundColor="LightBlue"
+                    Text="Mostra Editori"
+                    TextColor="Black"
+                    Clicked="LoadEditorsBtn_Clicked"
+                />
+
+                <Button
+                    x:Name="LoadGenresBtn"
+                    BackgroundColor="LightBlue"
+                    Text="Mostra Generi"
+                    TextColor="Black"
+                    Clicked="LoadGenresBtn_Clicked"
+                />
+                
+        </HorizontalStackLayout>
             
             <CollectionView x:Name="ShowData"
                 SelectionMode="Single"
