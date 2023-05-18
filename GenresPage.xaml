@@ -20,15 +20,24 @@
             <Label Grid.Column="0"
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Center"
-                   Text="Id"/>
+                   Text="Id"
+                   BackgroundColor="CadetBlue"
+                   FontFamily="TorusPro"
+                   FontSize="15"/>
             <Label Grid.Column="1"
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Center"
-                   Text="Descrizione"/>
+                   Text="Descrizione"
+                   BackgroundColor="#FF4E8D91"
+                   FontFamily="TorusPro"
+                   FontSize="15"/>
             <Label Grid.Column="2"
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Center"
-                   Text="Titoli"/>
+                   Text="Titoli"
+                   BackgroundColor="#FF3D7C80"
+                   FontFamily="TorusPro"
+                   FontSize="15"/>
         </Grid>
 
         <CollectionView x:Name="GenreDisplay" Grid.Row="1">
@@ -40,16 +49,27 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                        </Grid.RowDefinitions>
 
                         <Label Grid.Column="0" Text="{Binding Id}" 
                                HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
                         <Label Grid.Column="1" Text="{Binding Descrizione}" 
                                HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
                         <Label Grid.Column="2" Text="{Binding Titoli}" 
                                HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
+                        <BoxView Grid.Row="1" Grid.ColumnSpan="3"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

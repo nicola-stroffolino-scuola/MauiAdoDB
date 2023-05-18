@@ -18,7 +18,7 @@
                 FontFamily="TorusPro"
                 FontAttributes="Bold"
                 FontSize="20"
-                Margin="5 0"/>
+                Margin="2"/>
             <Button
                 x:Name="LoadEditorsBtn"
                 BackgroundColor="CadetBlue"
@@ -28,7 +28,7 @@
                 FontFamily="TorusPro"
                 FontAttributes="Bold"
                 FontSize="20"
-                Margin="5 0"/>
+                Margin="2"/>
             <Button
                 x:Name="LoadGenresBtn"
                 BackgroundColor="CadetBlue"
@@ -38,7 +38,7 @@
                 FontFamily="TorusPro"
                 FontAttributes="Bold"
                 FontSize="20"
-                Margin="5 0"/>
+                Margin="2"/>
         </FlexLayout>
 
         <CollectionView x:Name="ShowData"
@@ -49,7 +49,7 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="0 0 10 0" ColumnSpacing="3">
+                    <Grid Margin="5" ColumnSpacing="3">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
