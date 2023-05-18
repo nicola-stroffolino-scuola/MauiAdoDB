@@ -1,5 +1,4 @@
-﻿using System;
-namespace ADO_SQLITE
+﻿namespace ADO_SQLITE
 {
 	public class DTO_Details
 	{

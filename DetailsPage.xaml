@@ -2,136 +2,159 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ADO_SQLITE.DetailsPage"
-             Title="DetailsPage">
+             Title="Details Page">
 
     <Grid x:Name="DetailsGrid">
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
 
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="0"
-        />
-        <Label Grid.Column="0"
-                Grid.Row="0"
-                Padding="3"
-                Text="ISBN"
-                />
-        <Label Grid.Row="0"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_ISBN"
-                
-                />
+        
+        <Label Text="ISBN"
+               Grid.Row="0"
+               BackgroundColor="PaleVioletRed"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"/>
+        <Label x:Name="lbl_ISBN"
+               Grid.Column="1"
+               BackgroundColor="#FFB95071"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"/>
 
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="1"
-        />
-        <Label Grid.Column="0"
-                Grid.Row="1"
-                Padding="3"
-                Text="Titolo"
-                />
-        <Label Grid.Row="1"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_Titolo"
-                Text=""
-                />
 
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="2"
-        />
+        <Label Text="Titolo"
+               Grid.Row="1"
+               BackgroundColor="CadetBlue"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"/>
+        <Label x:Name="lbl_Titolo"
+               Grid.Row="1"
+               Grid.Column="1"
+               BackgroundColor="#FF3D7C80"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"/>
+
+
         <Label Grid.Column="0"
-                Grid.Row="2"
-                Padding="3"
-                Text="Anno"
-                />
+               Grid.Row="2"
+               Padding="3"
+               Text="Anno"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="LightSlateGray"/>
         <Label Grid.Row="2"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_Anno"
-                Text=""
-                />
+               Grid.Column="1"
+               Padding="3"
+               x:Name="lbl_Anno"
+               Text=""
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="#FF556677"/>
 
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="3"
-        />
+        
         <Label Grid.Column="0"
-                Grid.Row="3"
-                Padding="3"
-                Text="Prezzo"
-                />
+               Grid.Row="3"
+               Padding="3"
+               Text="Prezzo"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="PaleVioletRed"/>
         <Label Grid.Row="3"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_Prezzo"
-                Text=""
-                />
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="4"
-        />
+               Grid.Column="1"
+               Padding="3"
+               x:Name="lbl_Prezzo"
+               Text=""
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="#FFB95071"/>
+
+        
         <Label Grid.Column="0"
-                Grid.Row="4"
-                Padding="3"
-                Text="Autori"
-                />
+               Grid.Row="4"
+               Padding="3"
+               Text="Autori"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="LightSlateGray"/>
         <Label Grid.Row="4"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_Autori"
-                Text=""
-                />
+               Grid.Column="1"
+               Padding="3"
+               x:Name="lbl_Autori"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="#FF556677"/>
 
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="5"
-        />
+        
         <Label Grid.Column="0"
-                Grid.Row="5"
-                Padding="3"
-                Text="Editore"
-                />
+               Grid.Row="5"
+               Padding="3"
+               Text="Editore"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="CadetBlue"/>
         <Label Grid.Row="5"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_Editore"
-                Text=""
-                />
+               Grid.Column="1"
+               Padding="3"
+               x:Name="lbl_Editore"
+               Text=""
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="#FF3D7C80"/>
 
-        <BoxView Color="LightBlue"
-                    Grid.Column="0"
-                    Grid.Row="6"
-        />
+        
         <Label Grid.Column="0"
-                Grid.Row="6"
-                Padding="3"
-                Text="Genere"
-                />
+               Grid.Row="6"
+               Padding="3"
+               Text="Genere"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="PaleVioletRed"/>
         <Label Grid.Row="6"
-                Grid.Column="1"
-                Padding="3"
-                x:Name="lbl_Genere"
-                Text=""
-                />
-
+               Grid.Column="1"
+               Padding="3"
+               x:Name="lbl_Genere"
+               Text=""
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontFamily="TorusPro"
+               FontSize="15"
+               BackgroundColor="#FFB95071"/>
     </Grid>
-                   
 </ContentPage>

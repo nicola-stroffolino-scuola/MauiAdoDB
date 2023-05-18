@@ -2,8 +2,57 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ADO_SQLITE.EditorsPage"
-             Title="EditorsPage">
+             Title="Lista degli Editori">
 
-    
-    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0"
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center"
+                   Text="Id"/>
+            <Label Grid.Column="1"
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center"
+                   Text="Nome"/>
+            <Label Grid.Column="2"
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center"
+                   Text="Titoli Pubblicati"/>
+        </Grid>
+
+        <CollectionView x:Name="EditorsDisplay" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Text="{Binding Id}" 
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="{Binding Nome}" 
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="2" Text="{Binding Titoli}" 
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>

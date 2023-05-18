@@ -5,29 +5,29 @@ namespace ADO_SQLITE;
 
 public partial class MainPage : ContentPage
 {
-    public ObservableCollection<DTO_Book> Books = new ObservableCollection<DTO_Book>();
-    private string targetFile;
+    string TargetFile;
+    ObservableCollection<DTO_Book> Books;
 
     public MainPage()
 	{
 		InitializeComponent();
-	}
+        Books = new ObservableCollection<DTO_Book>();
+    }
 
     public void ValidateDatabase(string bundleFileName, string fileName) {
         //Recupero il path della cartella in cui si trova l'applicazione
         string mainDir = FileSystem.Current.AppDataDirectory;
         //Genero il path completo con anche il nome del file al nuovo file
-        targetFile = Path.Combine(mainDir, fileName);
-        if (!File.Exists(targetFile)) {
+        TargetFile = Path.Combine(mainDir, fileName);
+        if (!File.Exists(TargetFile)) {
             //Se il file non esiste nel file system della app, lo copia dal bundle
             try {
-                using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
+                using FileStream outputStream = File.OpenWrite(TargetFile);
                 using Stream fs = FileSystem.Current.OpenAppPackageFileAsync(bundleFileName).Result;
 
                 using BinaryWriter writer = new BinaryWriter(outputStream);
                 using (BinaryReader reader = new BinaryReader(fs)) {
                     var bytesRead = 0;
-
                     int bufferSize = 1024;
                     byte[] bytes;
                     var buffer = new byte[bufferSize];
@@ -38,12 +38,11 @@ public partial class MainPage : ContentPage
                             writer.Write(buffer);
                         }
                         while (bytesRead > 0);
-
                     }
                 }
             } catch (Exception ex) {
                 DisplayAlert("Errore1", ex.Message, "OK");
-                targetFile = null;
+                TargetFile = null;
             }
         }
     }
@@ -53,7 +52,7 @@ public partial class MainPage : ContentPage
         ValidateDatabase("DB_Libri.db", "DB_Libri_App.db");
         try
         {
-            string connectionTarget = $"Data Source={targetFile}";
+            string connectionTarget = $"Data Source={TargetFile}";
             using (var connection = new SqliteConnection(connectionTarget))
             {
                 connection.Open();
@@ -83,23 +82,6 @@ public partial class MainPage : ContentPage
         {
             await DisplayAlert(ex.Message, "Errore2", "OK");
         }
-    }
-
-    public async Task MoveFile(string sourceFile, string targetFileName)
-    {
-        // Read the source file
-        using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(sourceFile);
-        using StreamReader reader = new StreamReader(fileStream);
-
-        string content = await reader.ReadToEndAsync();
-
-        // Write the file content to the app data directory
-        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, targetFileName);
-
-        using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
-        using StreamWriter streamWriter = new StreamWriter(outputStream);
-
-        await streamWriter.WriteAsync(content);
     }
 
     void ShowData_SelectionChanged(object sender, SelectionChangedEventArgs e)

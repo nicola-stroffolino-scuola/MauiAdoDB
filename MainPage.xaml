@@ -1,116 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ADO_SQLITE.MainPage"
-             >
+             x:Class="ADO_SQLITE.MainPage">
 
-        <Grid x:Name="MainGrid">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <FlexLayout JustifyContent="SpaceEvenly">
+            <Button
+                x:Name="LoadDataBtn"
+                BackgroundColor="CadetBlue"
+                Text="Carica Dati"
+                TextColor="WhiteSmoke"
+                Clicked="LoadDataClicked"
+                FontFamily="TorusPro"
+                FontAttributes="Bold"
+                FontSize="20"
+                Margin="5 0"/>
+            <Button
+                x:Name="LoadEditorsBtn"
+                BackgroundColor="CadetBlue"
+                Text="Mostra Editori"
+                TextColor="WhiteSmoke"
+                Clicked="LoadEditorsBtn_Clicked"
+                FontFamily="TorusPro"
+                FontAttributes="Bold"
+                FontSize="20"
+                Margin="5 0"/>
+            <Button
+                x:Name="LoadGenresBtn"
+                BackgroundColor="CadetBlue"
+                Text="Mostra Generi"
+                TextColor="WhiteSmoke"
+                Clicked="LoadGenresBtn_Clicked"
+                FontFamily="TorusPro"
+                FontAttributes="Bold"
+                FontSize="20"
+                Margin="5 0"/>
+        </FlexLayout>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <HorizontalStackLayout Grid.Row="0">
+        <CollectionView x:Name="ShowData"
+            SelectionMode="Single"
+            SelectionChanged="ShowData_SelectionChanged"
+            Grid.Row="1"
+            ItemsUpdatingScrollMode="KeepLastItemInView">
 
-                <Button
-                    x:Name="LoadDataBtn"
-                    BackgroundColor="LightBlue"
-                    Text="Carica Dati"
-                    TextColor="Black"
-                    Clicked="LoadDataClicked"
-                />
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0 0 10 0" ColumnSpacing="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                <Button
-                    x:Name="LoadEditorsBtn"
-                    BackgroundColor="LightBlue"
-                    Text="Mostra Editori"
-                    TextColor="Black"
-                    Clicked="LoadEditorsBtn_Clicked"
-                />
+                        <Label Text="ISBN"
+                               Grid.RowSpan="2"
+                               BackgroundColor="PaleVioletRed"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"
+                               />
+                        <Label x:Name="lblISBN"
+                               Grid.Row="2" Grid.RowSpan="2"
+                               BackgroundColor="#FFB95071"
+                               Text="{Binding ISBN}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
 
-                <Button
-                    x:Name="LoadGenresBtn"
-                    BackgroundColor="LightBlue"
-                    Text="Mostra Generi"
-                    TextColor="Black"
-                    Clicked="LoadGenresBtn_Clicked"
-                />
-                
-        </HorizontalStackLayout>
-            
-            <CollectionView x:Name="ShowData"
-                SelectionMode="Single"
-                SelectionChanged="ShowData_SelectionChanged"
-                Grid.Row="1"
-                ItemsSource="{Binding DTO_Books}"
-                ItemsUpdatingScrollMode="KeepLastItemInView"
-                >
-            
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10" ColumnSpacing="3" Margin="3">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <BoxView Color="LightBlue"
-                                     Grid.Column="0"
-                                     Grid.Row="0"
-                                     Grid.ColumnSpan="3"/>
-                            <Label Grid.Column="0"
-                                   Padding="3"
-                                   Text="ISBN"
-                                   Grid.ColumnSpan="3"
-                                   />
-                            <BoxView Color="LightBlue"
-                                     Grid.Column="3"
-                                     Grid.Row="0"
-                                     Grid.ColumnSpan="1"/>
-                            <Label Grid.Column="3"
-                                   Padding="3"
-                                   Text="Anno"/>
-                            <Label x:Name="lblISBN"
-                                   Grid.Row="1"
-                                   Grid.ColumnSpan="3"
-                                   Padding="3"
-                                   Text="{Binding ISBN}"
-                                   
-                                   />
-                            <Label Grid.Column="3"
-                                   Grid.Row="1"
-                                   Padding="3"
-                                   Text="{Binding Anno}"/>
-                             <BoxView Color="LightBlue"
-                                     Grid.Column="0"
-                                     Grid.Row="2"
-                                     Grid.ColumnSpan="4"/>
-                            <Label Grid.Column="0"
-                                   Grid.Row="2"
-                                   Padding="3"
-                                   Text="Titolo"
-                                   Grid.ColumnSpan="4"
-                                   FontAttributes="Bold" />
-                            <Label Grid.Column="0"
-                                   Grid.ColumnSpan="4"
-                                   Grid.Row="4"
-                                   Padding="3"
-                                   Text="{Binding Titolo}"
-                                   FontAttributes="Italic"
-                                   VerticalOptions="End" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        <Label Text="Titolo"
+                               Grid.Column="1" Grid.ColumnSpan="2"
+                               BackgroundColor="CadetBlue"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
+                        <Label Text="{Binding Titolo}"
+                               Grid.Row="1"
+                               Grid.Column="1" Grid.ColumnSpan="2"
+                               BackgroundColor="#FF3D7C80"
+                               FontAttributes="Italic"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
 
-        </Grid>
-
+                        <Label Text="Anno"
+                               Grid.Row="2"
+                               Grid.Column="1" Grid.ColumnSpan="2"
+                               BackgroundColor="LightSlateGray"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
+                        <Label Text="{Binding Anno}"
+                               Grid.Row="3"
+                               Grid.Column="1" Grid.ColumnSpan="2"
+                               BackgroundColor="#FF556677"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontFamily="TorusPro"
+                               FontSize="15"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
 
