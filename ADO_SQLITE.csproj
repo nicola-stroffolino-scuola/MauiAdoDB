@@ -61,6 +61,19 @@
 	  <None Remove="Resources\Raw\DB_Libri.db" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Models\" />
+	  <Compile Update="EditorsPage.xaml.cs">
+	    <DependentUpon>EditorsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="GenresPage.xaml.cs">
+	    <DependentUpon>GenresPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="EditorsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="GenresPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 </Project>

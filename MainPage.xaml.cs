@@ -1,26 +1,23 @@
-﻿using System.Diagnostics;
-using Microsoft.Data.Sqlite;
-using System.Collections.Generic;
+﻿using Microsoft.Data.Sqlite;
 using System.Collections.ObjectModel;
-using Microsoft.Maui.Storage;
 
 namespace ADO_SQLITE;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
     public ObservableCollection<DTO_Book> Books = new ObservableCollection<DTO_Book>();
-    
-	public MainPage()
+    private string targetFile;
+
+    public MainPage()
 	{
 		InitializeComponent();
 	}
 
-    public string ValidateDatabase(string bundleFileName, string fileName) {
+    public void ValidateDatabase(string bundleFileName, string fileName) {
         //Recupero il path della cartella in cui si trova l'applicazione
         string mainDir = FileSystem.Current.AppDataDirectory;
         //Genero il path completo con anche il nome del file al nuovo file
-        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
+        targetFile = Path.Combine(mainDir, fileName);
         if (!File.Exists(targetFile)) {
             //Se il file non esiste nel file system della app, lo copia dal bundle
             try {
@@ -46,14 +43,14 @@ public partial class MainPage : ContentPage
                 }
             } catch (Exception ex) {
                 DisplayAlert("Errore1", ex.Message, "OK");
+                targetFile = null;
             }
         }
-        return targetFile;
     }
 
     private async void LoadDataClicked(object sender, EventArgs e)
     {
-        string targetFile = ValidateDatabase("DB_Libri.db", "DB_Libri_App.db");
+        ValidateDatabase("DB_Libri.db", "DB_Libri_App.db");
         try
         {
             string connectionTarget = $"Data Source={targetFile}";
@@ -74,9 +71,7 @@ public partial class MainPage : ContentPage
                         while (reader.Read())
                         {
                             DTO_Book b = new DTO_Book(reader);
-                            //b.ISBN = reader.GetInt64(0);
-                            //b.Titolo = reader.GetString(1);
-                            //b.Anno = reader.GetInt32(2);
+
                             Books.Add(b);
                         }
                     }   
@@ -88,7 +83,6 @@ public partial class MainPage : ContentPage
         {
             await DisplayAlert(ex.Message, "Errore2", "OK");
         }
-        
     }
 
     public async Task MoveFile(string sourceFile, string targetFileName)
@@ -108,8 +102,7 @@ public partial class MainPage : ContentPage
         await streamWriter.WriteAsync(content);
     }
 
-    void ShowData_SelectionChanged(System.Object sender,
-        Microsoft.Maui.Controls.SelectionChangedEventArgs e)
+    void ShowData_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var b = e.CurrentSelection[0] as DTO_Book;
         if (b != null)
@@ -120,11 +113,11 @@ public partial class MainPage : ContentPage
     }
 
     private void LoadEditorsBtn_Clicked(object sender, EventArgs e) {
-        
+        Navigation.PushAsync(new EditorsPage());
     }
 
     private void LoadGenresBtn_Clicked(object sender, EventArgs e) {
-
+        Navigation.PushAsync(new GenresPage());
     }
 }
 
