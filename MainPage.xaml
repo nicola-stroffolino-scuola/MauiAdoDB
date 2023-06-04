@@ -3,11 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ADO_SQLITE.MainPage">
 
-    <Grid x:Name="MainGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10*"/>
-        </Grid.RowDefinitions>
+    <Grid x:Name="MainGrid" RowDefinitions="*,10*">
         <FlexLayout JustifyContent="SpaceEvenly">
             <Button
                 x:Name="LoadDataBtn"
