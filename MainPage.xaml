@@ -7,7 +7,7 @@
         <FlexLayout JustifyContent="SpaceEvenly">
             <Button
                 x:Name="LoadDataBtn"
-                BackgroundColor="CadetBlue"
+                BackgroundColor="#142133"
                 Text="Carica Dati"
                 TextColor="WhiteSmoke"
                 Clicked="LoadDataClicked"
@@ -17,7 +17,7 @@
                 Margin="2"/>
             <Button
                 x:Name="LoadEditorsBtn"
-                BackgroundColor="CadetBlue"
+                BackgroundColor="#142133"
                 Text="Mostra Editori"
                 TextColor="WhiteSmoke"
                 Clicked="LoadEditorsBtn_Clicked"
@@ -27,10 +27,20 @@
                 Margin="2"/>
             <Button
                 x:Name="LoadGenresBtn"
-                BackgroundColor="CadetBlue"
+                BackgroundColor="#142133"
                 Text="Mostra Generi"
                 TextColor="WhiteSmoke"
                 Clicked="LoadGenresBtn_Clicked"
+                FontFamily="TorusPro"
+                FontAttributes="Bold"
+                FontSize="20"
+                Margin="2"/>
+            <Button
+                x:Name="CopyClipboardBtn"
+                BackgroundColor="#142133"
+                Text="Copia DB Directory nella Clipboard"
+                TextColor="WhiteSmoke"
+                Clicked="CopyClipboardBtn_Clicked"
                 FontFamily="TorusPro"
                 FontAttributes="Bold"
                 FontSize="20"
@@ -60,7 +70,7 @@
 
                         <Label Text="ISBN"
                                Grid.RowSpan="2"
-                               BackgroundColor="PaleVioletRed"
+                               BackgroundColor="#202D43"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontFamily="TorusPro"
@@ -68,7 +78,7 @@
                                />
                         <Label x:Name="lblISBN"
                                Grid.Row="2" Grid.RowSpan="2"
-                               BackgroundColor="#FFB95071"
+                               BackgroundColor="#142133"
                                Text="{Binding ISBN}"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
@@ -77,7 +87,7 @@
 
                         <Label Text="Titolo"
                                Grid.Column="1" Grid.ColumnSpan="2"
-                               BackgroundColor="CadetBlue"
+                               BackgroundColor="#415168"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontFamily="TorusPro"
@@ -85,7 +95,7 @@
                         <Label Text="{Binding Titolo}"
                                Grid.Row="1"
                                Grid.Column="1" Grid.ColumnSpan="2"
-                               BackgroundColor="#FF3D7C80"
+                               BackgroundColor="#2E4059"
                                FontAttributes="Italic"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
@@ -95,7 +105,7 @@
                         <Label Text="Anno"
                                Grid.Row="2"
                                Grid.Column="1" Grid.ColumnSpan="2"
-                               BackgroundColor="LightSlateGray"
+                               BackgroundColor="#415168"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontFamily="TorusPro"
@@ -103,7 +113,7 @@
                         <Label Text="{Binding Anno}"
                                Grid.Row="3"
                                Grid.Column="1" Grid.ColumnSpan="2"
-                               BackgroundColor="#FF556677"
+                               BackgroundColor="#2E4059"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontFamily="TorusPro"

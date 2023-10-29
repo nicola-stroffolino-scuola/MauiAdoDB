@@ -2,9 +2,9 @@
 
 namespace ADO_SQLITE.Models {
     public class DTO_Editors {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Titoli { get; set; }
+        public int Id { get; }
+        public string Nome { get; }        
+        public string Titoli { get; }
         public DTO_Editors(SqliteDataReader r) {
             Id = r.GetInt32(0);
             Nome = r.GetString(1);

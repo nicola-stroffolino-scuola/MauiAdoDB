@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ADO_SQLITE.DetailsPage"
-             Title="Dettagli Libro">
+             Title="Dettagli Libro"
+             BackgroundColor="#202D43">
 
     <Grid x:Name="DetailsGrid">
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -23,14 +25,14 @@
         
         <Label Text="ISBN"
                Grid.Row="0"
-               BackgroundColor="PaleVioletRed"
+               BackgroundColor="#142133"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"/>
         <Label x:Name="lbl_ISBN"
                Grid.Column="1"
-               BackgroundColor="#FFB95071"
+               BackgroundColor="#415168"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
@@ -39,15 +41,15 @@
 
         <Label Text="Titolo"
                Grid.Row="1"
-               BackgroundColor="CadetBlue"
+               BackgroundColor="#202D43"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"/>
-        <Label x:Name="lbl_Titolo"
+        <Entry x:Name="lbl_Titolo"
                Grid.Row="1"
                Grid.Column="1"
-               BackgroundColor="#FF3D7C80"
+               BackgroundColor="#526176"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
@@ -62,17 +64,16 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="LightSlateGray"/>
-        <Label Grid.Row="2"
+               BackgroundColor="#142133"/>
+        <Entry Grid.Row="2"
                Grid.Column="1"
-               Padding="3"
                x:Name="lbl_Anno"
                Text=""
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="#FF556677"/>
+               BackgroundColor="#415168"/>
 
         
         <Label Grid.Column="0"
@@ -83,17 +84,16 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="PaleVioletRed"/>
-        <Label Grid.Row="3"
+               BackgroundColor="#202D43"/>
+        <Entry Grid.Row="3"
                Grid.Column="1"
-               Padding="3"
                x:Name="lbl_Prezzo"
                Text=""
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="#FFB95071"/>
+               BackgroundColor="#526176"/>
 
         
         <Label Grid.Column="0"
@@ -104,7 +104,7 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="LightSlateGray"/>
+               BackgroundColor="#142133"/>
         <Label Grid.Row="4"
                Grid.Column="1"
                Padding="3"
@@ -113,7 +113,7 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="#FF556677"/>
+               BackgroundColor="#415168"/>
 
         
         <Label Grid.Column="0"
@@ -124,7 +124,7 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="CadetBlue"/>
+               BackgroundColor="#202D43"/>
         <Label Grid.Row="5"
                Grid.Column="1"
                Padding="3"
@@ -134,7 +134,7 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="#FF3D7C80"/>
+               BackgroundColor="#526176"/>
 
         
         <Label Grid.Column="0"
@@ -145,7 +145,7 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="PaleVioletRed"/>
+               BackgroundColor="#142133"/>
         <Label Grid.Row="6"
                Grid.Column="1"
                Padding="3"
@@ -155,6 +155,20 @@
                VerticalTextAlignment="Center"
                FontFamily="TorusPro"
                FontSize="15"
-               BackgroundColor="#FFB95071"/>
+               BackgroundColor="#415168"/>
+        
+        
+        <Button Grid.Row="7"
+                Grid.ColumnSpan="2"
+                Text="Salva Modifiche"
+                FontFamily="TorusPro"
+                FontSize="25"
+                WidthRequest="500"
+                BorderWidth="0"
+                CornerRadius="0"
+                TextColor="White"
+                BackgroundColor="#2E4059"
+                x:Name="SaveButton"
+                Clicked="SaveButton_Clicked"/>
     </Grid>
 </ContentPage>

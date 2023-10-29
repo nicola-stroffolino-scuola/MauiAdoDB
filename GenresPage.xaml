@@ -21,21 +21,21 @@
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Center"
                    Text="Id"
-                   BackgroundColor="CadetBlue"
+                   BackgroundColor="#142133"
                    FontFamily="TorusPro"
                    FontSize="15"/>
             <Label Grid.Column="1"
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Center"
                    Text="Descrizione"
-                   BackgroundColor="#FF4E8D91"
+                   BackgroundColor="#1B263B"
                    FontFamily="TorusPro"
                    FontSize="15"/>
             <Label Grid.Column="2"
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Center"
                    Text="Titoli"
-                   BackgroundColor="#FF3D7C80"
+                   BackgroundColor="#202D43"
                    FontFamily="TorusPro"
                    FontSize="15"/>
         </Grid>

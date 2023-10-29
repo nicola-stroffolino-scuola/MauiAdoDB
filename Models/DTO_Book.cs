@@ -5,9 +5,9 @@ namespace ADO_SQLITE
 {
 	public class DTO_Book
 	{
-		public Int64 ISBN { get; set; }
-		public string Titolo { get; set; }
-		public int Anno { get; set; }
+		public Int64 ISBN { get; }
+		public string Titolo { get; }
+		public int Anno { get; }
 
 		public DTO_Book(SqliteDataReader r)
 		{
